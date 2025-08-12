@@ -25,22 +25,35 @@
             box-sizing: border-box;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            color: white; /* Default text color for better visibility on images */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow for better readability */
         }
 
-        /* Individual Section Colors */
+        /* Overlay for better text readability */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+            z-index: -1;
+        }
+
+        /* Individual Section Background Images */
         #about {
-            background-color: #f7d794; /* A soft yellow */
-            color: #4b4b4b;
+            background-image: url('path/to/your/about-image.jpg'); /* Replace with your image path */
         }
         #research {
-            background-color: #a4b0be; /* A muted blue-grey */
-            color: #4b4b4b;
+            background-image: url('path/to/your/research-image.jpg'); /* Replace with your image path */
         }
         #teaching {
-            background-color: #778beb; /* A vibrant light blue */
-            color: #ffffff; /* White text for contrast */
+            background-image: url('path/to/your/teaching-image.jpg'); /* Replace with your image path */
         }
-        
+
         .section.visible {
             opacity: 1;
         }
@@ -49,22 +62,29 @@
         .section-content {
             max-width: 800px;
             margin: 0 auto;
+            z-index: 1; /* Ensure content is above the overlay */
         }
 
         .section h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: inherit; /* Inherit color from the parent section */
+            color: inherit;
+            transition: transform 0.3s ease-in-out;
         }
-        
-        #about h1, #research h1 {
-            color: #2c3e50;
+
+        .section h1:hover {
+            transform: scale(1.1); /* Enlarge heading on hover */
         }
 
         .section p {
             font-size: 1.2rem;
             line-height: 1.6;
             color: inherit;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section p:hover {
+            transform: scale(1.05); /* Slightly enlarge paragraph text on hover */
         }
 
         /* Navigation Bar */
@@ -125,10 +145,10 @@
     </section>
 
     <script>
-        // JavaScript for fade-in/fade-out effect on scroll
+        // JavaScript for fade-in effect on scroll
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

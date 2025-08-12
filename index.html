@@ -15,7 +15,7 @@
 
         /* Full-Screen Section Styling */
         .section {
-            min-height: 100vh; /* Use min-height for scrollable sections */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -28,19 +28,19 @@
         }
 
         /* Individual Section Colors */
-        #about { 
-            background-color: #f0f2f5; /* A light grey for the first section */
-            color: #333;
+        #about {
+            background-color: #f7d794; /* A soft yellow */
+            color: #4b4b4b;
         }
-        #research { 
-            background-color: #ffffff; /* White for a clean contrast */
-            color: #333;
+        #research {
+            background-color: #a4b0be; /* A muted blue-grey */
+            color: #4b4b4b;
         }
-        #teaching { 
-            background-color: #e9ecef; /* A slightly darker grey */
-            color: #333;
+        #teaching {
+            background-color: #778beb; /* A vibrant light blue */
+            color: #ffffff; /* White text for contrast */
         }
-        /* Style for when the section is visible */
+        
         .section.visible {
             opacity: 1;
         }
@@ -54,13 +54,17 @@
         .section h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: #2c3e50; /* A dark blue for headings */
+            color: inherit; /* Inherit color from the parent section */
+        }
+        
+        #about h1, #research h1 {
+            color: #2c3e50;
         }
 
         .section p {
             font-size: 1.2rem;
             line-height: 1.6;
-            color: #555;
+            color: inherit;
         }
 
         /* Navigation Bar */
@@ -87,7 +91,7 @@
         }
 
         .nav-bar a:hover {
-            color: #3498db; /* A vibrant blue for hover effect */
+            color: #778beb;
         }
     </style>
 </head>
@@ -102,21 +106,21 @@
     <section id="about" class="section">
         <div class="section-content">
             <h1>About Me 👋</h1>
-            <p>Welcome! This is where you can write a brief biography about yourself. Talk about your background, your professional interests, and what you're passionate about. You can also include links to your CV or social media profiles.</p>
+            <p>I'm a **Year 2 student** at **SUSS**, pursuing a **Bachelor's degree in ICT**. I'm passionate about technology and its impact on the world. This is a space to share my projects, academic journey, and interests.</p>
         </div>
     </section>
 
     <section id="research" class="section">
         <div class="section-content">
             <h1>Research 🔬</h1>
-            <p>This section is dedicated to your research work. List your publications, projects, and areas of expertise. You can use bullet points or a short description for each item. This is a great place to showcase your academic contributions.</p>
+            <p>This section is dedicated to my research work. I'll list my publications, projects, and areas of expertise here. This is a great place to showcase my academic contributions and explore new ideas.</p>
         </div>
     </section>
 
     <section id="teaching" class="section">
         <div class="section-content">
             <h1>Teaching 👩‍🏫</h1>
-            <p>Here you can detail your teaching experience. Mention the courses you've taught, your teaching philosophy, and any other relevant educational activities. This can also be a space to provide resources for your students.</p>
+            <p>Here you can find out details on my teaching experience. I'll mention courses I've taught, my teaching philosophy, and any other relevant educational activities. This can also be a space to provide resources for my students.</p>
         </div>
     </section>
 
@@ -134,7 +138,7 @@
                     }
                 });
             }, {
-                threshold: 0.5 // Trigger when 50% of the section is visible
+                threshold: 0.5
             });
 
             sections.forEach(section => {

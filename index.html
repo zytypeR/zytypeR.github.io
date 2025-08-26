@@ -1,191 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhi Yong's Page</title>
-    <style>
-        /* General Body and HTML Styling */
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zhi Yong's Page</title>
+  <style>
+    /* General Body and HTML Styling */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        /* Full-Screen Section Styling */
-        .section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px 20px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            color: white; /* Default text color for better visibility on images */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow for better readability */
-        }
+    /* Full-Screen Section Styling */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-        /* Overlay for better text readability */
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
-            z-index: -1;
-        }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        #about {
-            background: linear-gradient(270deg, orange, orangered);
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-        }
+    /* Gradient Backgrounds */
+    #about {
+      background: linear-gradient(270deg, orange, rgb(255, 217, 0));
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+    }
 
-        #research {
-            background: linear-gradient(270deg, gold, yellow);
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-            color: black;
-            text-shadow: none;
-        }
+    #research {
+      background: linear-gradient(270deg, rgb(0, 255, 60), rgb(0, 255, 140));
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      text-shadow: none;
+    }
 
-        #teaching {
-            background: linear-gradient(270deg, deepskyblue, dodgerblue);
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-        }
+    #teaching {
+      background: linear-gradient(270deg, deepskyblue, rgb(30, 255, 248));
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+    }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .section {
-            transform: translateY(50px);
-        }
+    /* Section Content Styling */
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      z-index: 1;
+    }
 
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 1s ease, transform 1s ease;
-        }
+    .section h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        /* Section Content Styling */
-        .section-content {
-            max-width: 800px;
-            margin: 0 auto;
-            z-index: 1; /* Ensure content is above the overlay */
-        }
+    .section h1:hover {
+      transform: scale(1.1);
+    }
 
-        .section h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: inherit;
-            transition: transform 0.3s ease-in-out;
-        }
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .section h1:hover {
-            transform: scale(1.1); /* Enlarge heading on hover */
-        }
+    .section p:hover {
+      transform: scale(1.05);
+    }
 
-        .section p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: inherit;
-            transition: transform 0.3s ease-in-out;
-        }
+    /* Scroll-down arrow */
+    .scroll-down {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 2rem;
+      animation: bounce 1.5s infinite;
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .section p:hover {
-            transform: scale(1.05); /* Slightly enlarge paragraph text on hover */
-        }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
 
-        /* Navigation Bar */
-        .nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
+    /* Navigation Bar */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
 
-        .nav-bar a {
-            text-decoration: none;
-            color: #2c3e50;
-            padding: 0 20px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
+    .nav-bar a {
+      text-decoration: none;
+      color: #2c3e50;
+      padding: 0 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
 
-        .nav-bar a:hover {
-            color: #778beb;
-        }
-    </style>
+    .nav-bar a:hover {
+      color: #778beb;
+    }
+
+    /* Animated underline */
+    .nav-bar a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #778beb;
+      transition: width 0.3s ease;
+    }
+
+    .nav-bar a:hover::after {
+      width: 100%;
+    }
+
+    /* Active link */
+    .nav-bar a.active {
+      color: #ff6600;
+      border-bottom: 2px solid currentColor;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#teaching">Teaching</a>
+  <div class="nav-bar">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+  </div>
+
+  <section id="about" class="section">
+    <div class="section-content">
+      <h1>About Me 👋</h1>
+      <p>Hello everyone! I'm currently a Year 2 student at SUSS, pursuing a Bachelor's degree in ICT. I'm passionate about technology and its impact on the world. This is a space to share my projects, academic journey, and interests.</p>
+      <a href="#research" class="scroll-down">↓</a>
     </div>
+  </section>
 
-    <section id="about" class="section">
-        <div class="section-content">
-            <h1>About Me 👋</h1>
-            <p>Hi eveyone! I'm currently a Year 2 student at SUSS, pursuing a Bachelor's degree in ICT. I'm passionate about technology and its impact on the world. This is a space to share my projects, academic journey, and interests.</p>
-        </div>
-    </section>
+  <section id="research" class="section">
+    <div class="section-content">
+      <h1>Research 🔬</h1>
+      <p>This section is dedicated to my research work. I'll list my publications, projects, and areas of expertise here. This is a great place to showcase my academic contributions and explore new ideas.</p>
+      <a href="#teaching" class="scroll-down">↓</a>
+    </div>
+  </section>
 
-    <section id="research" class="section">
-        <div class="section-content">
-            <h1>Research 🔬</h1>
-            <p>This section is dedicated to my research work. I'll list my publications, projects, and areas of expertise here. This is a great place to showcase my academic contributions and explore new ideas.</p>
-        </div>
-    </section>
+  <section id="teaching" class="section">
+    <div class="section-content">
+      <h1>Teaching 👩‍🏫</h1>
+      <p>Here you can find out details on my teaching experience. I'll mention courses I've taught, my teaching philosophy, and any other relevant educational activities. This can also be a space to provide resources for my students.</p>
+      <a href="#about" class="scroll-down">↑ Back to Top</a>
+    </div>
+  </section>
 
-    <section id="teaching" class="section">
-        <div class="section-content">
-            <h1>Teaching 👩‍🏫</h1>
-            <p>Here you can find out details on my teaching experience. I'll mention courses I've taught, my teaching philosophy, and any other relevant educational activities. This can also be a space to provide resources for my students.</p>
-        </div>
-    </section>
+  <script>
+    // Fade-in + nav highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-bar a');
 
-    <script>
-        // JavaScript for fade-in effect on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
-                    }
-                });
-            }, {
-                threshold: 0.5
+            // highlight nav link
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href').slice(1) === entry.target.id) {
+                link.classList.add('active');
+              }
             });
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+          }
         });
-    </script>
+      }, { threshold: 0.6 });
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
 </body>
 </html>

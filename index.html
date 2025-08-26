@@ -43,21 +43,40 @@
             z-index: -1;
         }
 
-        /* Individual Section Background Colors */
         #about {
-            background-color: orange; 
+            background: linear-gradient(270deg, orange, orangered);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
         }
+
         #research {
-            background-color: yellow; 
-            color: black; /* ensures text is readable on yellow */
-            text-shadow: none; /* remove shadow so text looks cleaner */
+            background: linear-gradient(270deg, gold, yellow);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            color: black;
+            text-shadow: none;
         }
+
         #teaching {
-        background-color: deepskyblue; /* bright blue */
+            background: linear-gradient(270deg, deepskyblue, dodgerblue);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
         }
-        
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section {
+            transform: translateY(50px);
+        }
+
         .section.visible {
             opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         /* Section Content Styling */
@@ -128,7 +147,7 @@
     <section id="about" class="section">
         <div class="section-content">
             <h1>About Me 👋</h1>
-            <p>I'm currently a Year 2 student at SUSS, pursuing a Bachelor's degree in ICT. I'm passionate about technology and its impact on the world. This is a space to share my projects, academic journey, and interests.</p>
+            <p>Hi eveyone! I'm currently a Year 2 student at SUSS, pursuing a Bachelor's degree in ICT. I'm passionate about technology and its impact on the world. This is a space to share my projects, academic journey, and interests.</p>
         </div>
     </section>
 

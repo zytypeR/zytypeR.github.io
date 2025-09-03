@@ -26,8 +26,6 @@
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 1s ease, transform 1s ease;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .section.visible {
@@ -46,7 +44,6 @@
       background: linear-gradient(270deg, rgb(0, 255, 60), rgb(0, 255, 140));
       background-size: 400% 400%;
       animation: gradientShift 10s ease infinite;
-      text-shadow: none;
     }
 
     #teaching {
@@ -61,31 +58,34 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Section Content Styling */
+    /* Option 1 + 4: Content Container Styling */
     .section-content {
       max-width: 800px;
       margin: 0 auto;
-      z-index: 1;
+      background: rgba(255, 255, 255, 0.9); /* semi-transparent box */
+      color: #2c3e50;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .section.visible .section-content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .section h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .section h1:hover {
-      transform: scale(1.1);
     }
 
     .section p {
       font-size: 1.2rem;
-      line-height: 1.6;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .section p:hover {
-      transform: scale(1.05);
+      line-height: 1.8;
     }
 
     /* Scroll-down arrow */
@@ -152,6 +152,16 @@
       color: #ff6600;
       border-bottom: 2px solid currentColor;
     }
+
+    /* Option 5: Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #555;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
@@ -185,6 +195,11 @@
       <a href="#about" class="scroll-down">↑ Back to Top</a>
     </div>
   </section>
+
+  <!-- Option 5: Footer -->
+  <footer>
+    © 2025 Zhi Yong | Made with ❤️ using HTML & CSS
+  </footer>
 
   <script>
     // Fade-in + nav highlighting
